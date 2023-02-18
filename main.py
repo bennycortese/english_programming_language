@@ -6,6 +6,8 @@ import speech_recognition as sr
 import pyttsx3
 import os
 import openai
+import modal
+stub = modal.Stub(image=modal.Image.debian_slim().pip_install("openai"))
 
 
 # Initialize the recognizer
@@ -23,11 +25,29 @@ def SpeakText(command):
 
 # Loop infinitely for user to
 # speak
+
+
+@stub.function(secret=modal.Secret.from_name("my-openai-secret"))
+def complete_text(prompt):
+
+    completion = openai.Completion.create(
+  model="code-davinci-002",
+  prompt=prompt,
+  temperature=0.75,
+  max_tokens=256,
+  top_p=1,
+  frequency_penalty=0,
+  presence_penalty=0
+)
+    return completion.choices[0].text
+
+# Press the green button in the gutter to run the script.
+@stub.local_entrypoint
 def main():
     #print(os.getenv("OPENAI_API_KEY"))
-    openai.api_key = ''
     speechWatch = True
     while (speechWatch):
+        list = []
         try:
             with sr.Microphone() as source2:
                 r.adjust_for_ambient_noise(source2, duration=0.2)
@@ -35,26 +55,11 @@ def main():
                 MyText = r.recognize_google(audio2)
                 MyText = MyText.lower()
                 MyText = """\n\n\n""" + MyText + """\n\n\n"""
-                completion = openai.Completion.create(engine="code-davinci-002", prompt=MyText, temperature = 0, max_tokens = 256, top_p = 1, frequency_penalty = 0, presence_penalty=0)
-                print()
-                #response = openai.Completion.create(
-                #    model="code-davinci-002",
-                #    prompt="\"\"\"\nWrite a program that outputs the fizz buzz of numbers between 1 and 50\n\"\"\"",
-                #    temperature=0,
-                #    max_tokens=256,
-                #    top_p=1,
-                #    frequency_penalty=0,
-                #    presence_penalty=0
-                #)
-                print(completion.choices[0].text)
+                for i in range(3):
+                    list.append(complete_text.call(MyText))
         except sr.RequestError as e:
             print("Could not request results; {0}".format(e))
         except sr.UnknownValueError:
             print("unknown error occurred")
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    main()
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
