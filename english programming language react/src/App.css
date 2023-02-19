@@ -1,0 +1,113 @@
+/* :root {
+  width: 100vw;
+  --chatbox-width: 30vw;
+} */
+body {
+  overflow: hidden;
+}
+
+* {
+  padding: 0px;
+  margin: 0px;
+}
+
+*:focus {
+  outline: none;
+}
+
+.page-container {
+  width: 100vw;
+  display: flex;
+}
+.col-container {
+  background-color: black;
+  /* width: var(--chatbox-width); */
+  width: 100%;
+  height: 100vh;
+  display: flex;
+/*     flex-direction: column; */
+}
+
+#w3review {
+  color: white;
+  height: 100vh;
+  width: 33%;
+  background-color: rgb(40,40,40);
+  border: 1px solid black;
+  padding: 32px;
+}
+
+.sidebar {
+  height: 100vh;
+  width: 30%;
+  background-color: red;
+}
+
+.absolute-container {
+  width: 50%;
+  height: 54px;
+  bottom: 0;
+  margin: 16px;
+  margin-left: 100px;
+
+/*   left: 0; */
+  /*   right: CALC(70% / 2 - 50%); */
+  position: absolute;
+  background-color: transparent;
+  border-radius: 8px;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#textInput {
+  width: 80%;
+  height: 34px;
+  background-color: #40414F;
+  border-radius: 8px;
+  border: 0px;
+  color: white;
+  border: none;
+  resize: none;
+  padding: 10px;
+}
+
+.mic-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 48px;
+  border-radius: 100px;
+  background-color: #40414F;
+  margin: 0px 12px;
+}
+
+.airplane-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 48px;
+  border-radius: 100px;
+  background-color: #40414F;
+  margin: 0px 12px;
+}
+
+/* .airplane {
+
+} */
+
+.send-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #40414F;
+  height: 100%;
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 0 40px rgba(0,0,0,.4);
+  background-color: green;
+}
+
