@@ -38,9 +38,11 @@ body {
 }
 
 .sidebar {
+  display: flex;
+  align-items: center;
   height: 100vh;
   width: 30%;
-  background-color: red;
+  background-color: #292624;
 }
 
 .absolute-container {
@@ -62,7 +64,7 @@ body {
 }
 
 #textInput {
-  width: 80%;
+  width: 100%;
   height: 34px;
   background-color: #40414F;
   border-radius: 8px;
@@ -78,7 +80,7 @@ body {
   justify-content: center;
   align-items: center;
   width: 24px;
-  height: 48px;
+  height: 24px;
   border-radius: 100px;
   background-color: #40414F;
   margin: 0px 12px;
@@ -95,9 +97,9 @@ body {
   margin: 0px 12px;
 }
 
-/* .airplane {
-
-} */
+.airplane {
+  color: rbg(142, 142, 160);
+}
 
 .send-container {
   display: flex;
@@ -108,6 +110,5 @@ body {
   width: 100%;
   border-radius: 8px;
   box-shadow: 0 0 40px rgba(0,0,0,.4);
-  background-color: green;
 }
 
